@@ -1,0 +1,41 @@
+<h2>List of Adults</h2>
+{% if latest_adults_list %}
+
+    <div class="table-responsive">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>Mobile no.</th>
+        <th>Email Address</th>
+        <th>Join Since</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for list in latest_adults_list %}    
+          {% if forloop.counter|divisibleby:2 %}
+              <tr class="success">
+                <td>{{ list.first_name }} {{ list.last_name }}</td>
+                <td>{{ list.gender }}</td>
+                <td>{{ list.mobile_no }}</td>
+                <td>{{ list.email }}</td>
+                <td>{{ list.date_joined }}</td>
+              </tr>
+          {% else %}
+              <tr class="danger">
+                <td>{{ list.first_name }} {{ list.last_name }}</td>
+                <td>{{ list.gender }}</td>
+                <td>{{ list.mobile_no }}</td>
+                <td>{{ list.email }}</td>
+                <td>{{ list.date_joined }}</td>
+              </tr>      
+          {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  
+{% else %}    
+    <p>No adults are available.</p>
+{% endif %}    
